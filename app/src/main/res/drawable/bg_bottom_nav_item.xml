@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- 选中态颜色：比外层更加亮一点的半透明白 -->
+    <solid android:color="#40FFFFFF" />
+
+    <!-- 角非常大，保证永远是圆角 pill -->
+    <corners android:radius="999dp" />
+</shape>

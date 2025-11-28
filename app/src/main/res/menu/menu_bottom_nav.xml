@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_today"
+        android:icon="@android:drawable/ic_menu_day"
+        android:title="今天" />
+
+    <item
+        android:id="@+id/nav_forecast"
+        android:icon="@android:drawable/ic_menu_week"
+        android:title="预报" />
+
+</menu>

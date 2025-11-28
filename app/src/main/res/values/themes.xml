@@ -3,7 +3,19 @@
     <style name="Base.Theme.WeatherForecast" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="bottomNavigationStyle">@style/Widget.Weather.BottomNav</item>
     </style>
 
     <style name="Theme.WeatherForecast" parent="Base.Theme.WeatherForecast" />
+
+    <style name="Widget.Weather.BottomNav" parent="Widget.MaterialComponents.BottomNavigationView">
+        <!-- 把默认的选中指示器设成透明，相当于关掉 -->
+        <item name="itemActiveIndicatorStyle">@style/BottomNav.ActiveIndicator.None</item>
+    </style>
+
+    <style name="BottomNav.ActiveIndicator.None" parent="">
+        <item name="android:color">@android:color/transparent</item>
+    </style>
+
+
 </resources>

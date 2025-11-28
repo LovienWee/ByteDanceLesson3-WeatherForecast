@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 选中状态：半透明白色椭圆 -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#80FFFFFF" />
+            <corners android:radius="999dp" />
+        </shape>
+    </item>
+
+    <!-- 未选中：透明椭圆（但保留圆角轮廓，用来裁剪涟漪） -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <corners android:radius="999dp" />
+        </shape>
+    </item>
+
+</selector>
