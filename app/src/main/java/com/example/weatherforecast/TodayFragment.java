@@ -67,6 +67,12 @@ public class TodayFragment extends Fragment {
     private TextView tabCityGuangzhou;
     private TextView tabCityShenzhen;
 
+    private String currentMainWeather;
+    private Forecast lastForecast;
+    private Cast lastTodayCast;
+
+
+
     // 网络相关
     private final OkHttpClient client = new OkHttpClient();
     private final Gson gson = new Gson();
@@ -76,14 +82,31 @@ public class TodayFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_today, container, false);
-        rootView = view;
+
+        rootToday = view.findViewById(R.id.root_today);
+
+        // 先设置背景（用我们刚刚的 currentMainWeather 逻辑）
+        if (currentMainWeather != null) {
+            updateBackgroundByWeather(currentMainWeather);
+        } else {
+            updateBackgroundByWeather(isNightNow() ? "阴" : "晴");
+        }
+
         initViews(view);
         initCityTabs();
 
-        // 进入页面时加载一次当前城市
-        fetchWeatherForCurrentCity();
+        // ⭐ 核心逻辑：如果有缓存，就先用缓存渲染一遍
+        if (lastForecast != null && lastTodayCast != null) {
+            renderTodayWeather(lastForecast, lastTodayCast);
+        } else {
+            // 第一次进入，没有数据时才去请求
+            fetchWeatherForCurrentCity();
+        }
+
         return view;
+
     }
 
     private void initViews(View view) {
@@ -209,7 +232,8 @@ public class TodayFragment extends Fragment {
                 }
 
                 Forecast forecast = weatherResponse.forecasts.get(0);
-                if (forecast.casts == null || forecast.casts.isEmpty()) {
+                List<Cast> casts = forecast.casts;
+                if (casts == null || casts.isEmpty()) {
                     Log.e(TAG, "no casts");
                     return;
                 }
@@ -238,6 +262,11 @@ public class TodayFragment extends Fragment {
             mainTemp = today.daytemp;
         }
 
+        // 缓存
+        lastForecast = forecast;
+        lastTodayCast = today;
+        currentMainWeather = mainWeather;
+
         // Emoji 显示主天气
         String emojiWeather = mapWeatherToEmoji(mainWeather);
         tvWeather.setText(emojiWeather);
@@ -260,7 +289,12 @@ public class TodayFragment extends Fragment {
         tvNightTemp.setText(today.nighttemp + "°");
         tvNightWind.setText(today.nightwind + " " + today.nightpower + "级");
 
-        // TODO：下一步在这里根据天气更新背景渐变（晴/雨/阴/多云等）
+        // 把未来几天的数据发给 MainActivity，让它转交给 ForecastFragment
+        if (getActivity() instanceof MainActivity) {
+            MainActivity act = (MainActivity) getActivity();
+            act.updateForecastData(forecast.city, forecast.casts);
+        }
+
     }
 
     private String mapWeatherToEmoji(String weather) {

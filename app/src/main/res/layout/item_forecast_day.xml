@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="64dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/bg_panel_glass"
+    android:padding="16dp">
+
+    <!-- 日期 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_day_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="今天"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_day_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="11/29"
+            android:textColor="#CCFFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+    <!-- 天气图标 -->
+    <TextView
+        android:id="@+id/tv_weather_icon"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="☀️"
+        android:textSize="20sp" />
+
+    <!-- 天气文字 -->
+    <TextView
+        android:id="@+id/tv_weather_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="晴"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <!-- 温度 -->
+    <TextView
+        android:id="@+id/tv_temp_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15° / 9°"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+</LinearLayout>

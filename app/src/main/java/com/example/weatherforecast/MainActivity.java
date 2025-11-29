@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.weatherforecast.model.Cast;
+
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -139,4 +143,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // endregion
+    // 让 TodayFragment 把未来几天天气数据交给 MainActivity
+    public void updateForecastData(String cityName, List<Cast> casts) {
+        if (forecastFragment != null) {
+            forecastFragment.updateForecast(cityName, casts);
+        }
+    }
+
+
 }

@@ -6,8 +6,7 @@
     android:paddingTop="48dp"
     android:paddingBottom="88dp"
     android:paddingStart="24dp"
-    android:paddingEnd="24dp"
-    android:background="@drawable/bg_today_gradient_sunny">
+    android:paddingEnd="24dp">
 
     <!-- 顶部：城市 + 天气描述 -->
     <LinearLayout

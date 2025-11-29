@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_forecast"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#87CEFA">
+    android:padding="24dp"
+    android:background="@drawable/bg_today_gradient_sunny">
 
-    <TextView
-        android:id="@+id/tv_placeholder"
-        android:layout_width="wrap_content"
+    <!-- 头部：标题 + 城市 -->
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="未来预报（占位）"
-        android:textColor="@android:color/white"
-        android:textSize="24sp" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tv_forecast_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未来预报"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_forecast_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="城市"
+            android:textColor="#CCFFFFFF"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- 列表 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_forecast"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_header"
+        android:layout_marginTop="24dp" />
+
+</RelativeLayout>
