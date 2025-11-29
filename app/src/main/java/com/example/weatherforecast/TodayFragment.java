@@ -311,7 +311,7 @@ public class TodayFragment extends Fragment {
         int hour = calendar.get(Calendar.HOUR_OF_DAY);  // 0~23
 
         // 18点到凌晨6点算夜间
-        return (hour >= 17 || hour < 6);
+        return (hour >= 18 || hour < 6);
     }
 
     // endregion
